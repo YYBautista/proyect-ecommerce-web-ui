@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductServicesService } from '../../../Services/product-services.service';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../../../Services/cart.service';
 import { FormsModule } from '@angular/forms';
 import { HeaderUserComponent } from '../../header-user/header-user.component';
 import { ItemCart } from '../../../common/item-cart';
 import { ToastrService } from 'ngx-toastr';
+import { HomeService } from '../../../Services/home.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -26,7 +26,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   constructor(
-    private productService: ProductServicesService,
+    private homeService: HomeService,
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,
     private toastr: ToastrService
@@ -36,7 +36,7 @@ export class DetailProductComponent implements OnInit {
     this.activatedRoute.params.subscribe((prod) => {
       let id = prod['id'];
       if (id) {
-        this.productService.getProductById(id).subscribe((data) => {
+        this.homeService.getProductById(id).subscribe((data) => {
           this.id = data.id;
           this.name = data.name;
           this.description = data.description;

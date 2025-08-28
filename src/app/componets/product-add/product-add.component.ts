@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Category } from '../../common/category';
 import { CategoryService } from '../../Services/category.service';
 import { NgFor } from '@angular/common';
+import { SessionStorageService } from '../../Services/session-storage.service';
 @Component({
   selector: 'app-product-add',
   imports: [HeaderAdminComponent, RouterLink, FormsModule, NgFor],
@@ -15,20 +16,21 @@ import { NgFor } from '@angular/common';
   styleUrl: './product-add.component.css',
 })
 export class ProductAddComponent implements OnInit {
-  id: number = 0;
-  code: string = '00674';
-  name: string = '';
-  description: string = '';
+  id!: number;
+  code!: string;
+  name!: string;
+  description!: string;
   price: number = 0;
-  urlImage: string = '';
-  userId: number = 1;
-  idCategory: number = 3;
+  urlImage!: string;
+  userId!: number;
+  idCategory!: number;
   categories: Category[] = [];
-
   selectFile!: File;
+  user!: number;
 
   constructor(
     private productService: ProductServicesService,
+    private sessionStorageService: SessionStorageService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
@@ -38,19 +40,26 @@ export class ProductAddComponent implements OnInit {
   ngOnInit(): void {
     this.getProductById();
     this.getCategories();
+    this.user = this.sessionStorageService.getItem('token').id;
+    this.userId = this.user;
   }
 
   public addProduct() {
     const formData = new FormData();
-    formData.append('id', this.id.toString());
-    formData.append('code', this.code);
-    formData.append('name', this.name);
-    formData.append('description', this.description);
-    formData.append('price', this.price.toString());
-    formData.append('image', this.selectFile);
-    formData.append('urlImage', this.urlImage);
-    formData.append('userId', this.userId.toString());
-    formData.append('idCategory', this.idCategory.toString());
+    formData.append('id', this.id ? this.id.toString() : '0');
+    formData.append('code', this.code || '');
+    formData.append('name', this.name || '');
+    formData.append('description', this.description || '');
+    formData.append('price', this.price ? this.price.toString() : '0');
+    formData.append('image', this.selectFile || '');
+    formData.append('urlImage', this.urlImage || '');
+    formData.append('userId', this.userId ? this.userId.toString() : '0');
+    formData.append(
+      'idCategory',
+      this.idCategory ? this.idCategory.toString() : '0'
+    );
+
+    console.log('FormData enviado:', formData);
 
     this.productService.createProduct(formData).subscribe((data) => {
       console.log(data);

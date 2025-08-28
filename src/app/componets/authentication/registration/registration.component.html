@@ -1,0 +1,99 @@
+<!-- Header User-->
+<app-header-user></app-header-user>
+<!--Page content-->
+<main>
+  <section class="card register-card p-4">
+    <article class="card-body">
+      <h2 class="text-center mb-4">Registro de Usuario</h2>
+      <form (ngSubmit)="register()">
+        <!-- firstName -->
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Nombres</label>
+          <input
+            [(ngModel)]="firstName"
+            name="firstName"
+            type="text"
+            class="form-control"
+            id="firstName"
+            placeholder="Nombre"
+            required
+          />
+        </div>
+        <!-- lastName -->
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Apellidos</label>
+          <input
+            [(ngModel)]="lastName"
+            name="lastName"
+            type="text"
+            class="form-control"
+            id="lastName"
+            placeholder="Apellidos"
+            required
+          />
+        </div>
+        <!-- email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input
+            [(ngModel)]="email"
+            name="email"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Correo Electrónico"
+            required
+          />
+        </div>
+        <!-- address -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Dirección</label>
+          <input
+            [(ngModel)]="address"
+            name="address"
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Dirección"
+            required
+          />
+        </div>
+        <!-- cellphone -->
+        <div class="mb-3">
+          <label for="cellphone" class="form-label">Celular</label>
+          <input
+            [(ngModel)]="cellphone"
+            name="cellphone"
+            type="tel"
+            class="form-control"
+            id="cellphone"
+            placeholder="Celular"
+            required
+          />
+        </div>
+        <!-- password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Contraseña"
+            required
+          />
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+        </div>
+      </form>
+    </article>
+  </section>
+
+  <footer class="text-center text-light mt-3">
+    <small>&copy; 2025 Ecommerce. Todos los derechos reservados.</small>
+  </footer>
+</main>

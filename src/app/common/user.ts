@@ -6,6 +6,8 @@ export class User {
     public lastName: string,
     public email: string,
     public address: string,
-    public cellphone: string
+    public cellphone: string,
+    public password: string,
+    public userType: string
   ) {}
 }

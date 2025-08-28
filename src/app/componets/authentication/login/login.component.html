@@ -1,0 +1,60 @@
+<!-- Header User-->
+<app-header-user></app-header-user>
+<!--Page content-->
+<main>
+  <section class="card p-4">
+    <header class="text-center mb-4">
+      <h1 class="h3">Iniciar Sesión</h1>
+      <p class="text-muted">Accede con tu cuenta</p>
+    </header>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <!-- Campo Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Correo Electronico</label>
+        <input
+          [(ngModel)]="username"
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          required
+          placeholder="Ingresa tu usuario"
+        />
+      </div>
+
+      <!-- Campo Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          [(ngModel)]="password"
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+          placeholder="Ingresa tu contraseña"
+        />
+      </div>
+
+      <!-- Botón login -->
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+      </div>
+    </form>
+
+    <!-- Opciones adicionales -->
+    <div class="text-center">
+      <a href="#" class="d-block mb-2">¿Olvidaste tu contraseña?</a>
+      <a
+        class="btn btn-outline-secondary btn-sm"
+        [routerLink]="['/user/register']"
+        >Registrarse</a
+      >
+    </div>
+  </section>
+
+  <footer class="text-center text-light mt-3">
+    <small>&copy; 2025 Ecommerce. Todos los derechos reservados.</small>
+  </footer>
+</main>

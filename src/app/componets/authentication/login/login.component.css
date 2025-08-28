@@ -1,0 +1,38 @@
+/* Fondo general */
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  padding: 1rem;
+}
+
+/* Contenedor principal */
+main {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Card del login */
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 576px) {
+  main {
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 1rem !important;
+    border-radius: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 1.25rem;
+  }
+}

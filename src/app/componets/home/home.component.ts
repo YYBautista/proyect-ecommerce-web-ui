@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../common/product';
-import { ProductServicesService } from '../../Services/product-services.service';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HeaderUserComponent } from '../header-user/header-user.component';
+import { HomeService } from '../../Services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +14,10 @@ import { HeaderUserComponent } from '../header-user/header-user.component';
 export class HomeComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductServicesService) {}
+  constructor(private homeService: HomeService) {}
 
   ngOnInit(): void {
-    this.productService
+    this.homeService
       .getProducts()
       .subscribe((data) => (this.products = data));
   }

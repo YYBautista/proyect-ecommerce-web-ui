@@ -27,9 +27,10 @@ export class SumaryOrderComponent implements OnInit {
   email: string = '';
   address: string = '';
   orderProducts: OrderProduct[] = [];
-  userId: number = 1;
+  userId!: number;
 
   ngOnInit(): void {
+    this.userId = this.sessionStorageService.getItem('token').id;
     this.items = this.cartService.convertToListFromMap();
     this.totalCart = this.cartService.totalCart();
     this.getUserById(this.userId);
